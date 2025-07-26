@@ -47,10 +47,38 @@
   (if (eq system-type 'windows-nt)
       (setq w32-use-visible-system-caret nil)))
 
+;; Set up UI
+(defun common/ui ()
+  "A function to set up UI."
+  ;; cursor is a box
+  (setq-default cursor-type 'box)
+  ;; maximize a window on startup
+  (add-hook 'window-setup-hook 'toggle-frame-maximized)
+  ;; doesn't show an initial logo
+  (setq inhibit-splash-screen t))
+
+(defun common/text ()
+  "A function to set up text."
+  ;; Use UTF-8 everywhere
+  (set-language-environment 'UTF-8)
+  (setq default-buffer-file-coding-system 'utf-8-unix)
+  ;; Use spaces instead of tabs
+  (setq-default indent-tabs-mode nil)
+  ;; Default tab width
+  (setq-default tab-width 4)
+  ;; A function to indent the current line
+  (setq indent-line-function 'indent-relative)
+  ;; List of tab stop positions
+  (setq tab-stop-list (number-sequence 4 200 4))
+  ;; Use TAB for completion
+  (setq tab-always-indent 'complete))
+
 ;; Set up the GNU Emacs
 (use-package emacs
   :config
-  (common/set-font))
+  (common/set-font)
+  (common/ui)
+  (common/text))
 
 ;; lab-theme - a color theme
 ;; https://github.com/MetroWind/lab-theme
