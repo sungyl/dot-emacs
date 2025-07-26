@@ -20,11 +20,31 @@
 
 ;;; Code:
 
+(require 'use-package)
+
 ;; Set a path to a custom file
 (setq custom-file (concat user-emacs-directory "custom.el"))
 
 (when (file-exists-p custom-file)
   (load custom-file))
+
+;; Set a font
+(defvar common/font
+  (cond ((eq system-type 'darwin)     '(:family "Monaco" :height 140))
+	((eq system-type 'windows-nt) '(:family "Consolas" :height 140))
+	(t                            '(:family "JetBrains Mono" :height 140)))
+  "Default font")
+
+(defun common/set-font ()
+  "A function to set a font for current OS."
+  (apply 'set-face-attribute 'default nil common/font)
+  (if (eq system-type 'windows-nt)
+      (setq w32-use-visible-system-caret nil)))
+
+;; Set up the GNU Emacs
+(use-package emacs
+  :config
+  (common/set-font))
 
 (provide 'init)
 
