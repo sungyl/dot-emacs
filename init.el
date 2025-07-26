@@ -20,7 +20,13 @@
 
 ;;; Code:
 
+(require 'package)
 (require 'use-package)
+
+;; Set up package.el
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/")) ; MELPA
+
+(package-initialize)
 
 ;; Set a path to a custom file
 (setq custom-file (concat user-emacs-directory "custom.el"))
@@ -45,6 +51,12 @@
 (use-package emacs
   :config
   (common/set-font))
+
+;; lab-theme - a color theme
+;; https://github.com/MetroWind/lab-theme
+(use-package lab-themes
+  :ensure t
+  :config (lab-themes-load-style 'light))
 
 (provide 'init)
 
