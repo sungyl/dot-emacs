@@ -20,6 +20,7 @@
 
 ;;; Code:
 
+(require 'display-line-numbers)
 (require 'package)
 (require 'use-package)
 
@@ -55,7 +56,11 @@
   ;; maximize a window on startup
   (add-hook 'window-setup-hook 'toggle-frame-maximized)
   ;; doesn't show an initial logo
-  (setq inhibit-splash-screen t))
+  (setq inhibit-splash-screen t)
+  ;; display line numbers
+  (global-display-line-numbers-mode)
+  ;; display column numbers
+  (column-numbers-mode))
 
 (defun common/text ()
   "A function to set up text."

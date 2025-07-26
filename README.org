@@ -1,3 +1,6 @@
 #+TITLE:  My personal configuration for GNU Emacs
 #+AUTHOR: Dmitry Jakovlev
 #+DATE:   <2025-07-26 Sat>
+
+* Inspiration
+- [[https://github.com/Lovesan/.emacs.d/][Lovesan's configuration]];
