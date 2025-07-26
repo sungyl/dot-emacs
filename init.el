@@ -60,7 +60,7 @@
   ;; display line numbers
   (global-display-line-numbers-mode)
   ;; display column numbers
-  (column-numbers-mode))
+  (column-number-mode))
 
 (defun common/text ()
   "A function to set up text."
