@@ -4,3 +4,4 @@
 
 * Inspiration
 - [[https://github.com/Lovesan/.emacs.d/][Lovesan's configuration]]
+- [[https://www.leemeichin.com/posts/slimming-down-the-config.html][lee meichin's post]]
