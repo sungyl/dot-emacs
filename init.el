@@ -42,7 +42,7 @@
 	(t                            '(:family "JetBrains Mono" :height 140)))
   "Default font")
 
-(defun common/set-font ()
+(defun common/font ()
   "A function to set a font for current OS."
   (apply 'set-face-attribute 'default nil common/font)
   (if (eq system-type 'windows-nt)
@@ -81,7 +81,7 @@
 ;; Set up the GNU Emacs
 (use-package emacs
   :config
-  (common/set-font)
+  (common/font)
   (common/ui)
   (common/text))
 
@@ -90,6 +90,15 @@
 (use-package lab-themes
   :ensure t
   :config (lab-themes-load-style 'light))
+
+;; company - a text and code completion framework
+;; https://github.com/company-mode/company-mode
+(use-package company
+  :ensure t
+  :hook   (after-init . global-company-mode)
+  :custom
+  (company-minimum-prefix-length 2)
+  (company-idle-delay 0.2))
 
 (provide 'init)
 
